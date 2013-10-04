@@ -66,3 +66,4 @@ sub submit_button_names {
 	return map $_->{name}, grep lc $_->{type} eq 'submit', values %{ $self->form_eles };
 }
 
+1;
