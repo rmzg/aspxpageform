@@ -42,7 +42,7 @@ sub new {
 }
 
 sub build_submit_data {
-	my( $self, $extra_fields ) = @_;
+	my( $self, $extra_data ) = @_;
 
 	my %submit_data;
 
@@ -50,8 +50,8 @@ sub build_submit_data {
 		$submit_data{ $ele->{name} } = $ele->{value} unless lc $ele->{type} eq 'submit';
 	}
 
-	if( $extra_fields ) { 
-		for( keys %$extra_fields ) { $submit_data{ $_ } = $extra_fields->{$_} }
+	if( $extra_data ) { 
+		for( keys %$extra_data ) { $submit_data{ $_ } = $extra_data->{$_} }
 	}
 
 	return \%submit_data;
@@ -70,9 +70,9 @@ sub submit_form {
 }
 
 sub click {
-	my( $self, $name, $extra_fields ) = @_;
+	my( $self, $name, $extra_data ) = @_;
 
-	my $submit_data = $self->build_submit_data( $extra_fields );
+	my $submit_data = $self->build_submit_data( $extra_data );
 	
 	if( $self->form_eles->{$name} ) {
 		$submit_data->{ $name } = $self->form_eles->{$name}->{value};
