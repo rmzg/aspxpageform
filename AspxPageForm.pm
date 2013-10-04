@@ -8,6 +8,7 @@ has 'ua' => sub { Mojo::UserAgent->new };
 
 has 'start_url';
 has 'start_tx';
+has 'dom';
 has 'form_eles';
 has 'form';
 
@@ -30,6 +31,8 @@ sub new {
 	unless( $tx->success ) { 
 		die "Error [$url]: ", (join " ", $tx->error), "\n";
 	}
+
+	$self->dom( $tx->res->dom );
 
 	$self->form( $tx->res->dom->at("form[name=aspnetForm]") );
 
