@@ -29,5 +29,7 @@ for( @{ $page->dom->find('a') } ) {
 	open my $fh, ">", $filename or die "Failed to open >[$filename]: $!\n";
 
 	print $fh $tx->res->body;
+
+	sleep(10);
 }
 
