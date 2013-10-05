@@ -1,4 +1,4 @@
 MANIFEST
 MANIFEST.SKIP
 /inc/
-.swp$
+*.swp
